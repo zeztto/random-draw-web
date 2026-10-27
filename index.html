@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>룰렛 추첨</title>
+    <meta name="description" content="번호 개수와 당첨자 수를 설정해 브라우저에서 실행하는 무작위 추첨 도구" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Content Security Policy -->
+    <!-- Note: frame-ancestors in meta tag will show a console warning (expected) -->
+    <!-- The actual frame-ancestors protection is enforced via HTTP headers (see public/_headers and vercel.json) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data: https:;
+        font-src 'self' data:;
+        connect-src 'self';
+        frame-ancestors 'none';
+        base-uri 'self';
+        form-action 'self';
+      "
+    />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
