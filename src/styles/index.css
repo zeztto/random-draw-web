@@ -1,0 +1,255 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+/* Screen reader only - hides content visually but keeps it accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Remove number input spinners */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* ===== Festival Lottery Animations ===== */
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(201, 48, 44, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(201, 48, 44, 0.5),
+      0 0 60px rgba(200, 150, 46, 0.2);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up-fade {
+  0% {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes winner-pop {
+  0% {
+    transform: scale(0) rotate(-10deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15) rotate(2deg);
+  }
+  80% {
+    transform: scale(0.95) rotate(-1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes pointer-pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scaleY(1);
+  }
+  50% {
+    transform: translateX(-50%) scaleY(1.08);
+  }
+}
+
+@keyframes ticker-bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(3px);
+  }
+}
+
+/* Utility animation classes */
+.animate-bounce-in {
+  animation: bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up-fade 0.4s ease-out forwards;
+}
+
+.animate-winner-pop {
+  animation: winner-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-pointer-pulse {
+  animation: pointer-pulse 1s ease-in-out infinite;
+}
+
+/* Confetti particle */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: confetti-fall linear forwards;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Wheel glow effect when spinning */
+.wheel-spinning {
+  filter: drop-shadow(0 0 20px rgba(201, 48, 44, 0.4));
+}
+
+/* Smooth card transitions */
+.card-festival {
+  box-shadow: var(--card-shadow);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card-festival:hover {
+  box-shadow: var(--warm-shadow);
+}
+
+/* Winner badge stagger */
+.winner-badge {
+  opacity: 0;
+  animation: winner-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.winner-badge:nth-child(1) {
+  animation-delay: 0s;
+}
+.winner-badge:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.winner-badge:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.winner-badge:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.winner-badge:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.winner-badge:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.winner-badge:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.winner-badge:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.winner-badge:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.winner-badge:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+.card-festival {
+  border: 1px solid var(--border);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+  [data-slot='roulette-rotation'] {
+    transition: none !important;
+  }
+  .winner-badge {
+    opacity: 1;
+  }
+}
